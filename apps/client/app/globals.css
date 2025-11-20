@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+
+@font-face {
+  font-family: "Euclid-Circular-B";
+  src: url("../app/fonts/Euclid-Circular-B.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --light: #0D65F3;
+}
+body{
+  font-family: "Euclid-Circular-B", sans-serif;
+}
+.line {
+  fill: none;
+  stroke: var(--light);
+  stroke-width: 2px;
+}
+
+.theLine {
+  stroke: var(--light);
+}
+
+.ball {
+  fill: var(--light);
+  visibility: hidden;
+}
+
+text {
+  fill: var(--light);
+  font-size: 15px;
+  visibility: hidden;
+}
