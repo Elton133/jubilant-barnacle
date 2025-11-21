@@ -91,7 +91,7 @@ export function HowItWorks() {
   return (
     <section className="w-full py-16 px-4 bg-white">
       <div className="max-w-4xl mx-auto flex flex-col items-center gap-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 text-center">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 text-center">
           How It Works
         </h1>
 

@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, MapPin, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import logo from '../../../public/next.svg'
+import logo from "../../../public/fev logo white 3.png"
 
 
 const navLinks = [
@@ -16,17 +16,15 @@ const navLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-between px-4 md:px-8 py-6 backdrop-blur-lg bg-white/80 shadow-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-between px-4 md:px-8 py-5 backdrop-blur-lg  shadow-sm">
         {/* Left: Brand */}
         <div className="flex items-center gap-3">
           <Link href="/">
-          <Image src={logo} width={100} height={100} alt="Logo" />
+          <Image src={logo} width={150} height={100} alt="Logo" />
           </Link>
         </div>
 
@@ -36,21 +34,21 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="relative text-gray-700 hover:text-gray-900 transition-colors group"
+              className="relative text-white hover:text-gray-300 transition-colors group"
             >
               {link.label}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2A2C22] transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#b8b8b8] transition-all duration-300 group-hover:w-full"></span>
             </Link>
           ))}
         </div>
 
         <div className="flex items-center gap-2 md:gap-4">
           {/* Sign in */}
-          <button onClick={() => setProfileMenuOpen(!profileMenuOpen) } className="hidden sm:flex items-center gap-2 bg-[#9CD7FF] backdrop-blur-sm text-[#050A30] rounded-xl px-3 md:px-8 py-3 text-sm md:text-sm hover:bg-[#050A30] hover:text-white transition">
+          <button className="hidden sm:flex items-center gap-2 bg-[#9CD7FF] backdrop-blur-sm text-[#050A30] rounded-xl px-3 md:px-8 py-3 text-sm md:text-sm hover:bg-[#050A30] hover:text-white transition">
             <span> Sign in</span>
           </button>
-          <button onClick={() => setProfileMenuOpen(!profileMenuOpen)} className="hidden sm:flex items-center gap-2 bg-[#050A30] backdrop-blur-sm text-white rounded-xl px-3 md:px-8 py-3 text-sm md:text-sm hover:bg-[#050A30]/90 hover:text-white transition">
-            <span> Sign up</span>
+          <button  className="hidden sm:flex items-center gap-2 bg-[#050A30] backdrop-blur-sm text-white rounded-xl px-3 md:px-8 py-3 text-sm md:text-sm hover:bg-[#050A30]/90 hover:text-white transition">
+            <span>Get Started</span>
           </button>
 
          
@@ -114,8 +112,6 @@ export default function Navbar() {
         </motion.div>
       )}
     </AnimatePresence>
-
-      {/* Cart Drawer */}
     
     </>
   );

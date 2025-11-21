@@ -3,27 +3,27 @@ export function FevAdvantage() {
     {
       id: 1,
       icon: '🔍',
-      title: 'Wide Vendor Selection',
-      description: 'Vetted and curated vendors'
+      title: '1000+ Verified Vendors',
+      description: 'Choose from over 1,000 verified vendors across various categories'
     },
     {
       id: 2,
       icon: '⭐',
-      title: 'Best Reviews',
-      description: 'All vendor pricing is verified'
+      title: 'Real Reviews',
+      description: 'Authentic feedback from verified customers who worked with vendors'
     },
     {
       id: 3,
       icon: '💬',
       title: 'Direct Communication',
-      description: 'Chat directly with vendors'
+      description: 'Message vendors instantly with no middleman or commission fees'
     }
   ]
 
   return (
     <section className="w-full py-12 bg-white">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">The FEV Advantage To You</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">The FEV Advantage To You</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
           {advantages.map((advantage) => (

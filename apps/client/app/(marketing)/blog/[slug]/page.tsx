@@ -1,19 +1,22 @@
-'use client'
+"use client"
 
-import { useParams, useRouter } from 'next/navigation'
-import Image from 'next/image'
+import { useParams, useRouter } from "next/navigation"
+import Image from "next/image"
+import BlogHero from "../../components/ReusableHero"
 
-import { ChevronLeft, Calendar, Clock } from 'lucide-react'
-import { RelatedArticles } from '../../components/RelatedArticles'
+import { ChevronLeft, Calendar, Clock } from "lucide-react"
+import { RelatedArticles } from "../../components/RelatedArticles"
+import Link from "next/link"
+import { NewsletterSignup } from "../../components/Newsletter"
 
 // Sample blog data - replace with your actual data/CMS
 const blogPostsData = {
-  'meeting-vendors-from-across-the-country': {
-    title: 'Meeting Vendors From Across The Country',
-    date: 'November 1, 2025',
-    readTime: '5 min read',
-    category: 'Trends',
-    image: 'https://images.unsplash.com/photo-1612315689640-c896b323083d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHZlbmRvcnN8ZW58MHx8MHx8fDA%3D',
+  "meeting-vendors-from-across-the-country": {
+    title: "Meeting Vendors From Across The Country",
+    date: "November 1, 2025",
+    readTime: "5 min read",
+    category: "Trends",
+    image: "/vendors-meeting-discussion.jpg",
     content: `
       <p>The event industry is constantly evolving, and 2025 is shaping up to be a year of exciting innovations and transformative trends. As event planners and vendors, staying ahead of these trends is crucial for delivering exceptional experiences that resonate with modern audiences.</p>
       
@@ -28,12 +31,12 @@ const blogPostsData = {
       <p>Whether you're planning an intimate wedding or a large-scale conference, keeping these trends in mind will help you create events that not only meet but exceed expectations.</p>
     `,
   },
-  'want-to-attract-more-clients': {
-    title: 'Want To Attract More Clients? Learn How To Stand Out as a Vendor on FEV.',
-    date: 'October 28, 2025',
-    readTime: '7 min read',
-    category: 'Vendors',
-    image: 'https://images.unsplash.com/photo-1612315689640-c896b323083d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHZlbmRvcnN8ZW58MHx8MHx8fDA%3D',
+  "want-to-attract-more-clients": {
+    title: "Want To Attract More Clients? Learn How To Stand Out as a Vendor on FEV.",
+    date: "October 28, 2025",
+    readTime: "7 min read",
+    category: "Vendors",
+    image: "/professional-vendor-woman.jpg",
     content: `
       <p>In a competitive vendor market, standing out is essential. Learn the strategies that help vendors attract more clients and build a thriving business on Find Event Vendors.</p>
       
@@ -44,12 +47,12 @@ const blogPostsData = {
       <p>Respond quickly to inquiries and engage with potential clients professionally. Your reputation depends on excellent communication and service delivery.</p>
     `,
   },
-  'event-planning-trends-2025': {
-    title: 'Event Planning Trends For 2025',
-    date: 'October 25, 2025',
-    readTime: '6 min read',
-    category: 'Planning',
-    image: '/event-planning-modern.jpg',
+  "how-to-choose-perfect-venue": {
+    title: "Event Planning Trends For 2025",
+    date: "October 25, 2025",
+    readTime: "6 min read",
+    category: "Planning",
+    image: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: `
       <p>Discover the top trends shaping event planning in 2025. From technology integration to personalized experiences, learn what's driving the industry forward.</p>
       
@@ -72,19 +75,13 @@ export default function BlogDetailPage() {
   if (!post) {
     return (
       <main className="min-h-screen px-4 md:px-8 lg:px-12 py-12 max-w-4xl mx-auto">
-        <button 
-
-          onClick={() => router.back()}
-          className="gap-2 mb-8"
-        >
+        <button  onClick={() => router.back()} className="gap-2 mb-8">
           <ChevronLeft className="w-4 h-4" />
           Back
         </button>
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold mb-4">Article not found</h1>
-          <button onClick={() => router.push('/blog')}>
-            Return to Blog
-          </button>
+          <button onClick={() => router.push("/blog")}>Return to Blog</button>
         </div>
       </main>
     )
@@ -93,56 +90,54 @@ export default function BlogDetailPage() {
   return (
     <main className="min-h-screen">
       {/* Back Button */}
-      <div className="px-4 md:px-8 lg:px-12 py-6 max-w-4xl mx-auto">
-        <button 
-          onClick={() => router.back()}
-          className="gap-2 mb-8"
-        >
+      <div className="px-4 md:px-8 lg:px-12 max-w-4xl mx-auto">
+        <button  onClick={() => router.back()} className="gap-2 mb-8">
           <ChevronLeft className="w-4 h-4" />
           Back
         </button>
       </div>
 
-      {/* Featured Image */}
-      <div className="px-4 md:px-8 lg:px-12 max-w-4xl mx-auto mb-8">
-        <div className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden">
-          <Image
-            src={post.image || "/placeholder.svg"}
-            alt={post.title}
-            fill
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute top-4 left-4">
-            <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-              {post.category}
-            </span>
-          </div>
-        </div>
-      </div>
+        <div className="relative">
+         <div className=" w-full mx-auto">
+          <div className="relative h-96 md:h-[500px] overflow-hidden">
+            <Image
+              src={post.image || "/placeholder.svg"}
+              alt={post.title}
+              fill
+              className="w-full h-full object-cover"
+            />
 
-      {/* Article Metadata */}
-      <div className="px-4 md:px-8 lg:px-12 max-w-4xl mx-auto mb-8">
-        <div className="bg-card rounded-xl p-6 md:p-8">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
-            {post.title}
-          </h1>
-          <div className="flex flex-wrap gap-4 text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4" />
-              <span>{post.date}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4" />
-              <span>{post.readTime}</span>
+            <div className="absolute top-4 left-4">
+              <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">{post.category}</span>
             </div>
           </div>
         </div>
+      
+        {/* Featured Article */}
+        {post ? (
+          <section className="px-4 md:px-8 lg:px-12 pb-12 max-w-5xl mx-auto relative -mt-20">
+            <div className=" rounded-xl p-6 md:p-8 shadow-xl bg-white">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">{post.title}</h1>
+
+            <div className="flex flex-wrap gap-4 text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4" />
+                <span>{post.date}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4" />
+                <span>{post.readTime}</span>
+              </div>
+            </div>
+          </div>
+          </section>
+        ) : null}
       </div>
 
       {/* Article Content */}
-      <div className="px-4 md:px-8 lg:px-12 max-w-4xl mx-auto mb-16">
+      <div className="px-4 md:px-8 lg:px-12 max-w-5xl mx-auto mb-16">
         <div className="prose prose-lg max-w-none">
-          <article 
+          <article
             className="text-foreground leading-relaxed space-y-6"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
@@ -153,6 +148,7 @@ export default function BlogDetailPage() {
       <section className="px-4 md:px-8 lg:px-12 py-12 bg-muted/50">
         <div className="max-w-7xl mx-auto">
           <RelatedArticles />
+          <NewsletterSignup/>
         </div>
       </section>
     </main>

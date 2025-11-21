@@ -1,80 +1,84 @@
 "use client";
 
-import { ArrowRight, Facebook, Instagram, Twitter } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Facebook, Instagram, Linkedin, Twitter, X } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer
-      className="bg-[#050A30] bg-cover bg-center bg-no-repeat text-white"
-
-    >
-
-
+    <footer className="bg-[#050A30] bg-cover bg-center bg-no-repeat text-white">
       {/* Main Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-2">
-            <p className="text-lg text-white mt-4">
-              <p className="text-xl">Find Event Vendors</p> is your go-to platform for connecting with
-              trusted event vendors. Whether you're planning a wedding, corporate
-              event, or private party, we make it easy to find the perfect
-              vendors to bring your vision to life.
-            </p>
+            <Image
+              src="/fev logo white 3.png"
+              alt="Find Event Vendors Logo"
+              width={200}
+              height={100}
+              className="mb-4"
+            />
           </div>
 
-          {/* About Column */}
+          {/* Quick Links */}
           <div>
             <h3 className="font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-3">
               <li>
-                <a
+                <Link
                   href="/blog"
                   className="text-white hover:text-gray-300 transition-colors"
                 >
                   Blog
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/vendors"
                   className="text-white hover:text-gray-300 transition-colors"
                 >
                   Find Vendors
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/how-it-works"
                   className="text-white hover:text-gray-300 transition-colors"
                 >
-                  Become a vendor
-                </a>
+                  Become a Vendor
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/about"
                   className="text-white hover:text-gray-300 transition-colors"
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/about"
+                <Link
+                  href="/privacy-policy"
                   className="text-white hover:text-gray-300 transition-colors"
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Customer Service */}
+          {/* Contact */}
           <div>
-            <h3 className="font-semibold text-white mb-4">
-              Customer Service
-            </h3>
+            <h3 className="font-semibold text-white mb-4">Contact Us</h3>
             <ul className="space-y-3">
+              <li>
+                <p className="text-white">123 Main Street, City, Country</p>
+              </li>
+              <li>
+                <p className="text-white">+1 (123) 456-7890</p>
+              </li>
               <li>
                 <a
                   href="mailto:hello@findeventvendors.com"
@@ -83,49 +87,33 @@ export default function Footer() {
                   hello@findeventvendors.com
                 </a>
               </li>
-              <li>
-                <p className="text-white">8:00am - 3:00pm, Mon to Fri</p>
-              </li>
-             
-            </ul>
-          </div>
-
-          {/* Info Column */}
-          <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Info</h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="/careers"
-                  className="text-white hover:text-gray-300 transition-colors"
-                >
-                  Jobs
-                </a>
-              </li>
-              
-              <li>
-                <a
-                  href="/blog"
-                  className="text-white hover:text-gray-300 transition-colors"
-                >
-                  Blog
-                </a>
-              </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="relative border-t border-gray-300 pt-8">
+        {/* Bottom */}
+        <div className="relative border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div className="flex flex-col gap-4">
-                <span className="text-sm">@2025 Find Event Vendors. All rights reserved</span>
+              <span className="text-sm">@{year} Find Event Vendors. All rights reserved</span>
             </div>
+
             <div className="flex flex-col gap-4">
-              <a className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors">
-        
-                <span className="text-sm ">Help Center</span>
-              </a>
+              <Link
+                href="/help"
+                className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors"
+              >
+                <span className="text-sm">Help Center</span>
+              </Link>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <Link
+                href="/terms"
+                className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors"
+              >
+                <span className="text-sm">Terms of Service</span>
+              </Link>
             </div>
 
             <div className="flex flex-col gap-6 md:items-end">
@@ -137,11 +125,14 @@ export default function Footer() {
                   <Instagram className="w-7 h-7" />
                 </a>
                 <a className="text-white hover:text-gray-900 transition-colors">
-                  <Twitter className="w-7 h-7" />
+                  <X className="w-7 h-7" />
+                </a>
+                <a className="text-white hover:text-gray-900 transition-colors">
+                  <Linkedin className="w-7 h-7" />
                 </a>
               </div>
-
             </div>
+
           </div>
         </div>
       </div>

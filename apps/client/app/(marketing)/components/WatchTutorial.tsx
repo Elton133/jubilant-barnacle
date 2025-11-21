@@ -6,7 +6,7 @@ import image from '../../../public/female-customer-places-items-counter 2.png'
 const WatchTutorial = () => {
   return (
     <div className='max-w-6xl mx-auto pb-10'>
-      <p>Watch tutorial here</p>
+      <Link href="video">Watch Tutorial Here</Link>
 
       <Image 
         src={image} 

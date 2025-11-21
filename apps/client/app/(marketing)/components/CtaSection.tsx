@@ -9,13 +9,13 @@ export function CtaSection() {
         </h2>
         
         <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-          Get connected with vetted and trusted event vendors for your next special occasion.
+          Join thousands of satisfied clients and vendors on findeventvendors.com. Find, compare, and connect with verified vendors or clients effortlessly.
         </p>
         
         <button 
-          className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3"
+          className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg"
         >
-          Start Browsing Vendors
+          Join us now
         </button>
       </div>
     </section>

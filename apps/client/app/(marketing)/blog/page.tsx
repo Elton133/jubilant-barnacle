@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Card from '../components/Card'
 import Link from 'next/link'
 import Image from 'next/image'
-import BlogHero from '../components/BlogHero'
+import ReusableHero from '../components/ReusableHero'
 import { NewsletterSignup } from '../components/Newsletter'
 
 // Sample blog data - replace with your actual data/CMS
@@ -80,51 +80,50 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen">
-      <BlogHero />
+      {/* Hero Section */}
+      <div className="relative">
+        <ReusableHero 
+          title="Event Planning Insights &"
+          bluetitle="Vendor Tips"
+          subtitle="Expert advice, industry trends, and practical guides to help you create unforgettable events"
+        />
 
-      {/* Featured Article */}
-      {featuredPost ? (
-      <section className="px-4 md:px-8 lg:px-12 py-12 max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* Featured Article Content */}
-          <div className="space-y-4">
-            <div className="inline-block">
-              <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                {featuredPost.category || 'Category'}
-              </span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              {featuredPost.title}
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              {featuredPost.description}
-            </p>
-            <div className="flex items-center gap-4 pt-4">
-              <span className="text-sm text-muted-foreground">{featuredPost.readTime}</span>
-            </div>
-            <Link href={`/blog/${featuredPost.slug}`}>
-              <button className="bg-purple-600 hover:bg-purple-700 text-white gap-2 px-6 py-2 rounded-lg">
-                Read More →
-              </button>
-            </Link>
-          </div>
 
-          {/* Featured Article Image */}
-          <div className="rounded-3xl overflow-hidden h-80 md:h-96">
-            <Image
-              src={featuredPost.image || "/placeholder.svg"}
-              alt={featuredPost.title}
-              width={400}
-              height={400}
-              className="w-full h-full object-cover"
-            />
-          </div>
+        {/* Featured Article */}
+        {featuredPost ? (
+          <section className="px-4 md:px-8 lg:px-12 pb-12 max-w-6xl mx-auto relative -mt-20 rounded-xl">
+            <div className="grid md:grid-cols-2 gap-8 items-center bg-white rounded-3xl shadow-xl">
+              
+        <div className="space-y-4 flex flex-col p-8">
+          <h2 className="text-3xl md:text-4xl font-bold">{featuredPost.title}</h2>
+          <p className="text-lg text-muted-foreground">{featuredPost.description}</p>
+          <span className="text-sm text-muted-foreground">{featuredPost.readTime}</span>
+
+          <Link href={`/blog/${featuredPost.slug}`}>
+            <button className="bg-purple-600 hover:bg-purple-700 text-white gap-2 px-6 py-2 rounded-lg">
+              Read More →
+            </button>
+          </Link>
         </div>
-      </section>
-      ) : null}
+
+        <div className=" overflow-hidden h-80 md:h-96 md:rounded-r-xl rounded-b-xl">
+          <Image
+            src={featuredPost.image}
+            alt={featuredPost.title}
+            width={400}
+            height={400}
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+      </div>
+    </section>
+  ) : null}
+        </div>
+
 
       {/* Category Filter */}
-      <section className="px-4 md:px-8 lg:px-12 py-8 max-w-7xl mx-auto">
+      <section className="px-4 md:px-8 lg:px-12 py-4 max-w-7xl mx-auto">
         <div className="flex flex-wrap gap-3">
           {categories.map((category) => (
             <button
@@ -143,7 +142,7 @@ export default function BlogPage() {
       </section>
 
       {/* Blog Grid */}
-      <section className="px-4 md:px-8 lg:px-12 py-12 max-w-7xl mx-auto">
+      <section className="px-4 md:px-8 lg:px-12 py-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {otherPosts.map((post) => (
             <Link key={post.id} href={`/blog/${post.slug}`}>
@@ -156,11 +155,7 @@ export default function BlogPage() {
                     height={300}
                     className="w-full h-full object-cover hover:scale-105 transition-transform"
                   />
-                  <div className="absolute top-3 left-3">
-                    <span className="bg-blue-500 text-white px-2.5 py-1 rounded-full text-xs font-medium">
-                      {post.category}
-                    </span>
-                  </div>
+                
                 </div>
                 <div className="p-4 flex-1 flex flex-col">
                   <h3 className="font-bold text-lg text-foreground mb-2 line-clamp-2">
