@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export function AboutUs() {
+export default function AboutUs() {
   return (
     <section className="w-full py-16 px-4 md:px-8 bg-white">
       <div className="max-w-6xl mx-auto">

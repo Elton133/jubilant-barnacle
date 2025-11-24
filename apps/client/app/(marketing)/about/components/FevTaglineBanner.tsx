@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export function FevTaglineBanner() {
+export default function FevTaglineBanner() {
   return (
     <div className="relative w-full overflow-hidden">
       <div className="bg-gradient-to-r from-[#600FD7] to-[#050A30] py-8 md:py-12 px-6 md:px-12 -skew-x-12 transform">

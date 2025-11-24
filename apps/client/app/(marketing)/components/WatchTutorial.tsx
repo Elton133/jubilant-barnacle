@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import image from '../../../public/female-customer-places-items-counter 2.png'
 
-const WatchTutorial = () => {
+export default function WatchTutorial() {
   return (
     <div className='max-w-6xl mx-auto pb-10'>
       <Link href="video">Watch Tutorial Here</Link>
@@ -19,4 +19,3 @@ const WatchTutorial = () => {
   )
 }
 
-export default WatchTutorial

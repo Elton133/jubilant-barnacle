@@ -29,7 +29,7 @@ const values: Value[] = [
   }
 ]
 
-export function WhyVendorsWin() {
+export default function WhyVendorsWin() {
   return (
     <section className="w-full py-16 px-4 md:px-8 bg-white">
       <div className="max-w-6xl mx-auto">

@@ -1,4 +1,4 @@
-export function MissionVision() {
+export default function MissionVision() {
   return (
     <section className="w-full py-6 px-4 md:px-8 bg-gradient-to-r from-[#600FD7] to-[#050A30]">
       <div className="max-w-6xl mx-auto">

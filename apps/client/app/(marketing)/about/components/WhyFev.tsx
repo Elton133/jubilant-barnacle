@@ -1,6 +1,6 @@
 "use client"
 
-export function WhyFevCard() {
+export default function WhyFevCard() {
   return (
     <div className="flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-2xl rounded-2xl bg-[#050A30] px-8 py-12 text-center shadow-lg sm:px-12 sm:py-16">

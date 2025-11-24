@@ -1,6 +1,6 @@
 import React from 'react'
 import Hero from '../components/Hero'
-import { WhyVendorsWin } from '../components/WhyVendorsWin'
+import WhyVendorsWin from '../components/WhyVendorsWin'
 import HowFevWorksForVendors from '../components/HowFevWorksForVendors'
 import WatchTutorial from '../components/WatchTutorial'
 import ReusableHero from '../components/ReusableHero'
