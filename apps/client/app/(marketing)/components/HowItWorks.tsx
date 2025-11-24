@@ -81,7 +81,7 @@ const AccordionItem = ({
   )
 }
 
-export function HowItWorks() {
+export default function HowItWorks() {
   const [userType, setUserType] = useState<UserType>('customers')
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const isMobile = useIsMobile()

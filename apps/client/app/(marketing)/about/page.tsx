@@ -1,5 +1,5 @@
 
-import { CtaSection } from "../components/CtaSection";
+import CtaSection from "../components/CtaSection";
 import { AboutUs } from "./components/AboutUs";
 import { FevTaglineBanner } from "./components/FevTaglineBanner";
 import { MeetOurTeam } from "./components/MeetOurTeam";

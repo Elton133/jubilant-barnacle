@@ -1,7 +1,7 @@
 import { Camera, Building, Flower, Lightbulb, ForkKnifeCrossed } from "lucide-react"
 import Image from "next/image"
 
-export function VendorCategories() {
+export default function VendorCategories() {
   const categories = [
     {
       id: 1,

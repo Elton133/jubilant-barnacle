@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 
-export function NewsletterSignup() {
+export default function NewsletterSignup() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
 

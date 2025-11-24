@@ -1,6 +1,6 @@
 
 
-export function CtaSection() {
+export default function CtaSection() {
   return (
     <section className="w-full py-16 bg-[#F0F7FF]">
       <div className="max-w-4xl mx-auto px-4 text-center">

@@ -1,4 +1,4 @@
-export function FevAdvantage() {
+export default function FevAdvantage() {
   const advantages = [
     {
       id: 1,

@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-export function RelatedArticles() {
+export default function RelatedArticles() {
   const blogPosts = [
     {
       id: 1,

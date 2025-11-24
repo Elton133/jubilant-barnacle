@@ -2,7 +2,7 @@ import { Scale } from "lucide-react"
 import { SearchIcon } from "lucide-react"
 import { MessageCircle } from "lucide-react"
 
-export function FevBrings() {
+export default function FevBrings() {
   const advantages = [
     {
       id: 1,

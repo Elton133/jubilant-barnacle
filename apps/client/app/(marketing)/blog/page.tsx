@@ -5,7 +5,7 @@ import Card from '../components/Card'
 import Link from 'next/link'
 import Image from 'next/image'
 import ReusableHero from '../components/ReusableHero'
-import { NewsletterSignup } from '../components/Newsletter'
+import  NewsletterSignup  from '../components/Newsletter'
 
 // Sample blog data - replace with your actual data/CMS
 const blogPosts = [
