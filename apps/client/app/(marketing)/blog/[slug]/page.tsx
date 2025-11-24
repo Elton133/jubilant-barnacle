@@ -4,7 +4,7 @@ import { useParams, useRouter } from "next/navigation"
 import Image from "next/image"
 
 import { ChevronLeft, Calendar, Clock } from "lucide-react"
-import RelatedArticles  from "../../components/RelatedArticles"
+import RelatedArticles from "../../components/RelatedArticles"
 
 import NewsletterSignup from "../../components/Newsletter"
 
