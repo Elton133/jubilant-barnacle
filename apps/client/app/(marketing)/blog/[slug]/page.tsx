@@ -2,12 +2,11 @@
 
 import { useParams, useRouter } from "next/navigation"
 import Image from "next/image"
-import BlogHero from "../../components/ReusableHero"
 
 import { ChevronLeft, Calendar, Clock } from "lucide-react"
-import { RelatedArticles } from "../../components/RelatedArticles"
-import Link from "next/link"
-import { NewsletterSignup } from "../../components/Newsletter"
+import RelatedArticles  from "../../components/RelatedArticles"
+
+import NewsletterSignup from "../../components/Newsletter"
 
 // Sample blog data - replace with your actual data/CMS
 const blogPostsData = {
