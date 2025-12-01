@@ -119,11 +119,10 @@ export default function BlogDetailPage() {
       {/* Article Content */}
       <div className="px-4 md:px-8 lg:px-12 max-w-5xl mx-auto mb-16">
         <div className="prose prose-lg max-w-none">
-          {/* <article
+          <article
             className="text-foreground leading-relaxed space-y-6"
             dangerouslySetInnerHTML={{ __html: post.content}}
-          /> */}
-          <p>{post.content}</p>
+          />
         </div>
       </div>
 
