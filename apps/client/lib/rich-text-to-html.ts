@@ -144,7 +144,7 @@ function nodeToHtml(node: LegacyNode | string | LegacyNode[]): string {
     case 'paragraph':
       return `<p>${(node.content || []).map(nodeToHtml).join('')}</p>`
     case 'heading': {
-      const level = node.attrs?.level || 1
+      const level = node.attrs?.level || 2
       return `<h${level}>${(node.content || []).map(nodeToHtml).join('')}</h${level}>`
     }
     case 'text':
@@ -158,7 +158,7 @@ function nodeToHtml(node: LegacyNode | string | LegacyNode[]): string {
     case 'blockquote':
       return `<blockquote>${(node.content || []).map(nodeToHtml).join('')}</blockquote>`
     case 'code_block':
-      return `<pre><code>${escapeHtml((node.content || []).map((n) => n.text || '').join(''))}</code></pre>`
+      return `<pre><code>${escapeHtml((node.content || []).map((n: LegacyNode) => n.text || '').join(''))}</code></pre>`
     case 'image': {
       const src = node.attrs?.src || node.attrs?.url || node.attrs?.srcset || node.data?.file?.url || ''
       const alt = node.attrs?.alt || node.attrs?.caption || ''
