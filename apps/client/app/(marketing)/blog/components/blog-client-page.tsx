@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import { useState } from 'react'
@@ -6,49 +5,52 @@ import Link from 'next/link'
 import Image from 'next/image'
 import ReusableHero from '../../components/ReusableHero'
 import NewsletterSignup from '../../components/Newsletter'
+import { imageURL } from '../../../../lib/blog-services'
+import type { StrapiBlog, StrapiListResponse, FormattedBlog } from '../../../../lib/types'
 
-// blogs: array coming from Strapi
-export default function BlogClientPage({ blogs }: any) {
+interface BlogClientPageProps {
+  blogs: StrapiListResponse<StrapiBlog> | StrapiBlog[];
+}
+
+export default function BlogClientPage({ blogs }: BlogClientPageProps) {
   const [selectedCategory, setSelectedCategory] = useState("All")
 
   // Normalize incoming `blogs` from Strapi. Strapi responses may come as
   // { data: [...] } or as an array directly. Guard against null/undefined.
-  const blogItems: any[] = Array.isArray(blogs)
+  const blogItems: StrapiBlog[] = Array.isArray(blogs)
     ? blogs
     : blogs && Array.isArray(blogs.data)
     ? blogs.data
     : []
 
   // Format Strapi response into your UI structure with safe fallbacks
-  const formattedBlogs = blogItems.map((item: any) => {
-    const attrs = item.attributes ?? item
-    const categoryName =
-      attrs.category?.data?.attributes?.name || attrs.category || 'General'
+  const formattedBlogs: FormattedBlog[] = blogItems.map((item: StrapiBlog) => {
+    // Strapi v5 uses flat structure, v4 uses nested attributes
+    const categoryName = item.category?.name || 'General'
 
-    // Resolve image URL (Strapi may nest media info differently)
-    const coverUrl =
-      attrs.cover?.data?.attributes?.url || attrs.cover?.url || attrs.image || '/placeholder.svg'
+    // Resolve image URL using the imageURL helper for Strapi v5
+    const coverUrl = imageURL(item.coverImage) || '/placeholder.svg'
 
     return {
-      id: item.id || attrs.id || Math.random().toString(36).slice(2, 9),
-      slug: attrs.slug || attrs?.meta?.slug || '',
-      title: attrs.title || attrs.name || 'Untitled',
-      description: attrs.excerpt || attrs.description || '',
+      id: item.id,
+      slug: item.slug || '',
+      title: item.title || 'Untitled',
+      description: item.excerpt || '',
       category: categoryName,
       image: coverUrl,
-      readTime: attrs.readTime || '5 min read',
-      date: attrs.publishedAt || attrs.createdAt || null,
+      readTime: item.readTime || '5 min read',
+      date: item.publishedAt || item.createdAt || null,
     }
   })
 
-  const categories = [
+  const categories: string[] = [
     'All',
-    ...Array.from(new Set(formattedBlogs.map((b: any) => b.category).filter(Boolean))),
+    ...Array.from(new Set(formattedBlogs.map((b) => b.category).filter(Boolean))),
   ]
 
   const filteredPosts = selectedCategory === "All"
     ? formattedBlogs
-    : formattedBlogs.filter((post: any) => post.category === selectedCategory)
+    : formattedBlogs.filter((post) => post.category === selectedCategory)
 
   const featuredPost = filteredPosts[0]
   const otherPosts = filteredPosts.slice(1)
@@ -104,7 +106,7 @@ export default function BlogClientPage({ blogs }: any) {
 
       <section className="px-4 md:px-8 lg:px-12 py-4 max-w-7xl mx-auto">
         <div className="flex flex-wrap gap-3">
-          {categories.map((category: any) => (
+          {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
@@ -122,7 +124,7 @@ export default function BlogClientPage({ blogs }: any) {
 
       <section className="px-4 md:px-8 lg:px-12 py-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {otherPosts.map((post: any) => (
+          {otherPosts.map((post) => (
             <Link key={post.id} href={`/blog/${post.slug}`}>
               <div className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer h-full flex flex-col">
                 <div className="relative h-48 overflow-hidden">
