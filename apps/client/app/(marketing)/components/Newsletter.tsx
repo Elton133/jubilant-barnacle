@@ -18,27 +18,30 @@ export default function NewsletterSignup() {
 
   return (
     <section className="w-full py-8 bg-white">
-      <div className="max-w-2xl mx-auto px-4">
+      <div className="max-w-4xl mx-auto px-4">
+
         <div className="flex justify-center">
           <Image 
-            src="/man.png" 
+            src="/man.png"
             alt="Newsletter signup"
-            className=" h-auto"
             width={800}
             height={600}
+            className="w-full max-w-xs sm:max-w-sm md:max-w-md h-auto"
           />
         </div>
 
-        <div className="bg-blue-400 rounded-2xl p-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Sign Up For Our Newsletter</h2>
+        <div className="bg-gradient-to-r from-[#600FD7] to-[#9CD7FF] rounded-2xl p-6 sm:p-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+            Sign Up For Our Newsletter
+          </h2>
           
-          <p className="text-gray-800 mb-8 text-sm">
+          <p className="text-white mb-6 text-sm sm:text-base">
             Join our community of planners and vendors for exclusive updates, event inspiration, and platform news.
           </p>
           
           <form 
             onSubmit={handleSubmit} 
-            className="flex max-w-md mx-auto gap-3 bg-white p-2 rounded-xl shadow-sm border border-gray-200"
+            className="flex flex-col sm:flex-row max-w-md mx-auto gap-3 bg-white p-2 rounded-xl shadow-sm border border-gray-200"
           >
             <input
               type="email"
@@ -51,13 +54,16 @@ export default function NewsletterSignup() {
 
             <button 
               type="submit"
-              className="px-6 py-2 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 active:scale-[0.98] transition"
+              className="px-6 py-2 bg-gray-900 text-white font-semibold rounded-lg hover:bg-[#600fd7] hover:text-white hover:border-[#9CD7FF] active:scale-[0.98] transition"
             >
               Subscribe
             </button>
           </form>
+
           {submitted && (
-            <p className="text-sm mt-4 text-gray-800">✓ Thank you for subscribing!</p>
+            <p className="text-sm mt-4 text-gray-800">
+              ✓ Thank you for subscribing!
+            </p>
           )}
         </div>
       </div>

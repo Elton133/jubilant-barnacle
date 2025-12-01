@@ -4,7 +4,7 @@ export default function CtaSection() {
   return (
     <section className="w-full py-16 bg-[#F0F7FF]">
       <div className="max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6">
+        <h2 className="text-2xl md:text-3xl font-[Euclid-Circular-B-Bold] mb-6">
           Ready to Find the Perfect Event Vendor?
         </h2>
         
@@ -13,7 +13,7 @@ export default function CtaSection() {
         </p>
         
         <button 
-          className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg"
+          className="bg-[#600FD7] text-white px-8 py-3 rounded-xl"
         >
           Join us now
         </button>

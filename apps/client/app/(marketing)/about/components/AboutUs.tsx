@@ -7,7 +7,17 @@ export default function AboutUs() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Left content */}
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold">About Us</h2>
+            <h2
+              className="
+                text-3xl md:text-4xl font-[Euclid-Circular-B-Bold]
+                relative w-fit
+                after:content-[''] after:absolute after:left-0 after:-bottom-1
+                after:h-[3px] after:w-full
+                after:bg-[linear-gradient(to_right,#600FD7,#9CD7FF)]
+              "
+            >
+              About Us
+            </h2>
             <div className="space-y-3 text-foreground/80">
               <p>
                 At FEV (FindEventVendors.com), we’re redefining how people plan events. Our platform connects individuals, businesses, and event planners with verified vendors, making it easier than ever to find the right professionals for any occasion. <br /> <br />

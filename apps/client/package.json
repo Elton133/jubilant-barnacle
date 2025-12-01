@@ -13,6 +13,7 @@
   "dependencies": {
     "@repo/ui": "workspace:*",
     "@tailwindcss/postcss": "^4.1.17",
+    "axios": "^1.13.2",
     "framer-motion": "^12.23.24",
     "gsap": "^3.13.0",
     "lucide-react": "^0.554.0",

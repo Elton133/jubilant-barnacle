@@ -1,4 +1,4 @@
-import { Zap, Users, Lightbulb, Gauge } from 'lucide-react'
+import { Users, MessageSquareText, Star, CircleUserIcon } from 'lucide-react'
 
 interface Value {
   icon: React.ReactNode
@@ -8,24 +8,24 @@ interface Value {
 
 const values: Value[] = [
   {
-    icon: <Lightbulb className="w-8 h-8" />,
-    title: 'Innovation',
-    description: 'We continuously evolve the way people choose and network.'
+    icon: <Star className="w-8 h-8" />,
+    title: 'Customer Reviews',
+    description: 'Gain trust with verified ratings that help you stand out..'
   },
   {
     icon: <Users className="w-8 h-8" />,
-    title: 'Professionalism',
-    description: 'We lead with transparency and professionalism in every interaction.'
+    title: 'Reach More Clients',
+    description: 'Get discovered by planners and event owners actively searching for your services.'
   },
   {
-    icon: <Zap className="w-8 h-8" />,
-    title: 'Creativity',
-    description: 'We celebrate the art and imagination of events and experiences.'
+    icon: <CircleUserIcon className="w-8 h-8" />,
+    title: 'Professional Profile',
+    description: 'Build credibility with a detailed business profile, photos, and reviews.'
   },
   {
-    icon: <Gauge className="w-8 h-8" />,
-    title: 'Efficiency',
-    description: 'We simplify the event-process for everyone.'
+    icon: <MessageSquareText className="w-8 h-8" />,
+    title: 'Direct Inquiries',
+    description: 'Receive messages and manage requests from your dashboard.'
   }
 ]
 
@@ -33,12 +33,12 @@ export default function WhyVendorsWin() {
   return (
     <section className="w-full py-16 px-4 md:px-8 bg-white">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Why Vendors Win with FEV</h2>
+        <h2 className="text-3xl md:text-5xl font-[Euclid-Circular-B-Bold] text-center mb-12">Why Vendors Win with FEV</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {values.map((value, index) => (
-            <div key={index} className="flex gap-4 shadow-sm p-6 rounded-lg hover:shadow-sm transition-shadow bg-[#050A30]">
-              <div className="text-white flex-shrink-0">
+            <div key={index} className="flex gap-4 flex-col shadow-sm p-6 rounded-2xl transition-shadow bg-[#050A30] hover:shadow-lg">
+              <div className="text-white flex-shrink-0 bg-[]">
                 {value.icon}
               </div>
               <div>
@@ -49,6 +49,11 @@ export default function WhyVendorsWin() {
           ))}
         </div>
       </div>
+      <div className="flex justify-center mt-20">
+          <button className="bg-[#600FD7] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-shadow hover:bg-[#600FD7]/20 hover:border hover:text-black border-[#600FD7]">
+            Get Started
+          </button>
+        </div>
     </section>
   )
 }

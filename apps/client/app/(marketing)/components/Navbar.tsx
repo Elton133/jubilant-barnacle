@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import logo from "../../../public/fev logo white 3.png"
+
 
 
 const navLinks = [
@@ -16,11 +17,26 @@ const navLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
   const toggleMenu = () => setMenuOpen((prev) => !prev);
+
+    useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 10);
+    }
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-between px-4 md:px-8 py-5 backdrop-blur-lg  shadow-sm">
+       <nav
+      className={`fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-between px-4 md:px-8 py-5 transition-all duration-300
+      ${scrolled 
+        ? "bg-gradient-to-r from-[#050A30] to-[#600FD7]/90 shadow-sm" 
+        : "backdrop-blur-lg bg-transparent"
+      }`}
+    >
         {/* Left: Brand */}
         <div className="flex items-center gap-3">
           <Link href="/">
@@ -34,7 +50,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="relative text-white hover:text-gray-300 transition-colors group"
+              className="relative text-white hover:text-gray-300 transition-colors group text-md"
             >
               {link.label}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#b8b8b8] transition-all duration-300 group-hover:w-full"></span>
@@ -44,10 +60,10 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2 md:gap-4">
           {/* Sign in */}
-          <button className="hidden sm:flex items-center gap-2 bg-[#9CD7FF] backdrop-blur-sm text-[#050A30] rounded-xl px-3 md:px-8 py-3 text-sm md:text-sm hover:bg-[#050A30] hover:text-white transition">
+          <button className="hidden sm:flex items-center gap-2 bg-[#9CD7FF] backdrop-blur-sm text-[#050A30] rounded-xl px-3 md:px-8 py-3 text-sm md:text-sm hover:bg-[#8A3AFF] hover:border-[#F1F1F1] hover:text-white transition hover:cursor-pointer">
             <span> Sign in</span>
           </button>
-          <button  className="hidden sm:flex items-center gap-2 bg-[#050A30] backdrop-blur-sm text-white rounded-xl px-3 md:px-8 py-3 text-sm md:text-sm hover:bg-[#050A30]/90 hover:text-white transition">
+          <button  className="hidden sm:flex items-center gap-2 bg-[#050A30] backdrop-blur-sm text-white rounded-xl px-3 md:px-8 py-3 text-sm md:text-sm hover:bg-[#8A3AFF] hover:border-[#F1F1F1] hover:text-white transition cursor-pointer">
             <span>Get Started</span>
           </button>
 
@@ -59,7 +75,7 @@ export default function Navbar() {
             className="md:hidden p-2 rounded-full hover:bg-gray-100/80 transition"
             aria-label="Menu"
           >
-            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {menuOpen ? <X className="w-5 h-5" color="white"/> : <Menu className="w-5 h-5" color="white" />}
           </button>
         </div>
       </nav>

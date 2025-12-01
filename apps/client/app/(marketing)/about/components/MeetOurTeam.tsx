@@ -48,7 +48,7 @@ export default function MeetOurTeam() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">Meet Our Team</h2>
+          <h2 className="text-3xl md:text-5xl font-[Euclid-Circular-B-Bold] mb-4 text-black">Meet Our Team</h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg">
             Behind FEV is a passionate team of event enthusiasts committed to making vendor discovery smarter and
             simpler.

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Search, Scale, Star, Leaf, MessageSquare, Settings } from 'lucide-react'
+import { Search, Scale,   MessageSquare,  Compass, BadgeCheck, BookHeart } from 'lucide-react'
 import Image from 'next/image'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -41,7 +41,7 @@ const flowSteps: FlowStep[] = [
   },
   {
     id: 3,
-    icon: <Star className="w-12 h-12 text-blue-500" />,
+    icon: <BookHeart className="w-12 h-12 text-blue-500" />,
     title: 'Get Discovered By Event Planners',
     description:
       'Appear in category, location, and event type searches so the right clients easily find you.',
@@ -49,7 +49,7 @@ const flowSteps: FlowStep[] = [
   },
   {
     id: 4,
-    icon: <Leaf className="w-12 h-12 text-blue-500" />,
+    icon: <Compass className="w-12 h-12 text-blue-500" />,
     title: 'Receive Inquiries & Bookings',
     description:
       'Clients can message you directly, request quotes, or book through your listing with instant notifications.',
@@ -65,7 +65,7 @@ const flowSteps: FlowStep[] = [
   },
   {
     id: 6,
-    icon: <Settings className="w-12 h-12 text-blue-500" />,
+    icon: <BadgeCheck className="w-12 h-12 text-blue-500" />,
     title: 'Manage Everything Seamlessly',
     description:
       'Track leads, manage bookings, update your portfolio, and grow your presence — all in one dashboard.',
@@ -139,12 +139,15 @@ export default function HowFevWorksForVendors() {
       <div className="max-w-7xl mx-auto relative">
         {/* HEADER */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-4xl md:text-5xl font-[Euclid-Circular-B-Bold] mb-4">
             How FEV Works
             <br />
             For <span className="text-blue-500">Vendors</span>
           </h1>
         </div>
+
+          <div className="absolute top-100 -left-20 w-[550px] h-[550px] rounded-full bg-blue-400/10 blur-3xl z-0"></div>
+          <div className="absolute top-26 -right-20 w-[550px] h-[550px] rounded-full bg-gradient-to-br from-purple-400/10 to-transparent blur-3xl z-0"></div>
 
         {/* GSAP LINE (Desktop only) */}
 
@@ -202,7 +205,7 @@ export default function HowFevWorksForVendors() {
             >
               {/* ICON + TEXT */}
               <div className="w-full lg:w-1/2 flex flex-col text-center lg:text-left items-center lg:items-start">
-                <div className="mb-6 bg-blue-50 p-6 rounded-full">
+                <div className="mb-6">
                   {step.icon}
                 </div>
 
@@ -238,13 +241,6 @@ export default function HowFevWorksForVendors() {
               </div>
             </motion.div>
           ))}
-        </div>
-
-        {/* CTA */}
-        <div className="flex justify-center mt-20">
-          <button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-shadow">
-            Become A Vendor
-          </button>
         </div>
       </div>
     </div>

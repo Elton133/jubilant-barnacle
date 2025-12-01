@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Facebook, Instagram, Linkedin, Twitter, X } from "lucide-react";
+import {  Facebook, Instagram, Linkedin, X } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
@@ -109,7 +109,7 @@ export default function Footer() {
 
             <div className="flex flex-col gap-4">
               <Link
-                href="/terms"
+                href="/terms-of-service"
                 className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors"
               >
                 <span className="text-sm">Terms of Service</span>
@@ -118,17 +118,17 @@ export default function Footer() {
 
             <div className="flex flex-col gap-6 md:items-end">
               <div className="flex gap-4">
+                 <a className="text-white hover:text-gray-900 transition-colors">
+                  <Image src="/twitter.png" alt="twitter" width={24} height={24} />
+                </a> 
                 <a className="text-white hover:text-gray-900 transition-colors">
-                  <Facebook className="w-7 h-7" />
+                  <Image src="/instagram.png" alt="instagram" width={24} height={24} />
                 </a>
                 <a className="text-white hover:text-gray-900 transition-colors">
-                  <Instagram className="w-7 h-7" />
+                  <Image src="/facebook.png" alt="facebook" width={28} height={28} />
                 </a>
                 <a className="text-white hover:text-gray-900 transition-colors">
-                  <X className="w-7 h-7" />
-                </a>
-                <a className="text-white hover:text-gray-900 transition-colors">
-                  <Linkedin className="w-7 h-7" />
+                   <Image src="/linkedin.png" alt="linkedin" width={28} height={28} />
                 </a>
               </div>
             </div>

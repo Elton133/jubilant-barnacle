@@ -18,7 +18,7 @@ export default function TestimonialsSlider({ testimonials }: any) {
           {testimonials.map((t: any, idx: number) => (
             <div className="item" key={t.id} style={{ '--position': idx + 1 } as any}>
               <div className="card">
-                <div className="flex items-center gap-3 mb-2">
+                <div className="flex items-center gap-3 mb-5">
                   <Image
                     src={t.image}
                     width={40}
@@ -26,19 +26,16 @@ export default function TestimonialsSlider({ testimonials }: any) {
                     alt={t.name}
                     className="rounded-full"
                   />
-                  <div>
+                  <div className='flex'>
                     <p className="font-semibold text-sm">{t.name}</p>
-                    <p className="text-xs opacity-80">{t.role}</p>
-                  </div>
-                </div>
-
-                <p className="text-sm mb-2">{t.content}</p>
-
-                <div className="flex gap-1 text-yellow-400 text-sm">
+                    <div className="flex gap-1 text-yellow-400 text-sm">
                   {[...Array(t.rating)].map((_, i) => (
                     <span key={i}>⭐</span>
                   ))}
                 </div>
+                  </div>
+                </div>
+                <p className="text-sm mb-2">{t.content}</p>
               </div>
             </div>
           ))}
@@ -77,9 +74,9 @@ const StyledWrapper = styled.div`
     height: var(--height);
     position: absolute;
     left: 100%;
-    animation: autoRun 10s linear infinite;
+    animation: autoRun 20s linear infinite;
     animation-delay: calc(
-      (10s / var(--quantity)) * (var(--position) - 1) - 10s
+      (20s / var(--quantity)) * (var(--position) - 1) - 20s
     ) !important;
     transition: filter 0.4s;
   }
