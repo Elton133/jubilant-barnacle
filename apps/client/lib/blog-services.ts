@@ -1,8 +1,8 @@
-import { strapi } from "./strapi";
-import { STRAPI_URL } from "./strapi";
+import { strapi, STRAPI_URL } from "./strapi";
+import type { StrapiBlog, StrapiListResponse, StrapiImage } from "./types";
 
-export async function getBlogs() {
-  const res = await strapi.get("/blogs", {
+export async function getBlogs(): Promise<StrapiListResponse<StrapiBlog>> {
+  const res = await strapi.get<StrapiListResponse<StrapiBlog>>("/blogs", {
     params: {
       populate: ["coverImage", "category"],
     },
@@ -11,9 +11,8 @@ export async function getBlogs() {
   return res.data;
 }
 
-
-export async function getBlogBySlug(slug: string) {
-  const res = await strapi.get("/blogs", {
+export async function getBlogBySlug(slug: string): Promise<StrapiBlog | undefined> {
+  const res = await strapi.get<StrapiListResponse<StrapiBlog>>("/blogs", {
     params: {
       filters: { slug: { $eq: slug } },
       populate: ["coverImage", "category"],
@@ -23,10 +22,8 @@ export async function getBlogBySlug(slug: string) {
   return res.data.data?.[0];
 }
 
-
-
-export async function getRelatedBlogs(categoryId: number, blogId: number) {
-  const res = await strapi.get("/blogs", {
+export async function getRelatedBlogs(categoryId: number, blogId: number): Promise<StrapiBlog[]> {
+  const res = await strapi.get<StrapiListResponse<StrapiBlog>>("/blogs", {
     params: {
       filters: {
         category: { id: { $eq: categoryId } },
@@ -40,12 +37,17 @@ export async function getRelatedBlogs(categoryId: number, blogId: number) {
   return res.data.data;
 }
 
+/**
+ * Get full image URL from Strapi image object.
+ * Handles both Strapi v4 (nested data.attributes) and v5 (flat) formats.
+ */
+export function imageURL(image: StrapiImage | null | undefined): string {
+  if (!image) return "";
 
-export function imageURL(image: any) {
-  const url = image?.data?.attributes?.url;
+  // Strapi v5 flat format - url is directly on the image object
+  const url = image.url;
   if (!url) return "";
 
-  return url.startsWith("/")
-    ? `${STRAPI_URL}${url}`
-    : url;
+  // If URL is relative, prepend Strapi URL
+  return url.startsWith("/") ? `${STRAPI_URL}${url}` : url;
 }
