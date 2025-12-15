@@ -41,6 +41,9 @@
     },
     "content": {
       "type": "blocks"
+    },
+    "featured": {
+      "type": "boolean"
     }
   }
 }
